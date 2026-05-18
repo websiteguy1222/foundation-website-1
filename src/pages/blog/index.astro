@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// When you add real blog posts, switch this to:
+//   import { getCollection } from 'astro:content';
+//   const posts = await getCollection('blog');
+// and render the list below.
+const posts: { slug: string; title: string; date: string; summary: string }[] = [];
+---
+<BaseLayout title="News" description="Updates, stories, and announcements from Let's Skate Foundation and Elmbrook Speedskating.">
+  <section class="section">
+    <div class="sec-inner page-hero">
+      <div class="label"><span class="label-dot" aria-hidden="true"></span> Stories from the ice</div>
+      <h1 class="heading">News</h1>
+      <p class="body-text page-lede">
+        Updates, stories, and announcements from the foundation and the club.
+      </p>
+    </div>
+
+    <div class="sec-inner">
+      {posts.length === 0 ? (
+        <div class="empty-state">
+          <p>No posts yet — we're working on it.</p>
+          <p style="margin-top:0.5rem">
+            Want news in your inbox?
+            <a href="mailto:admin@letsskate.org">Email us</a>
+            to join the list.
+          </p>
+        </div>
+      ) : (
+        <ul class="post-list">
+          {posts.map((post) => (
+            <li class="post-item">
+              <a href={`/blog/${post.slug}`}>
+                <span class="post-date">{post.date}</span>
+                <span class="post-title">{post.title}</span>
+                <span class="post-summary">{post.summary}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { text-align: center; }
+  .page-hero .label { justify-content: center; }
+  .page-hero h1.heading { font-size: clamp(2.2rem, 4vw, 3rem); }
+  .page-lede { max-width: 640px; margin: 1rem auto 0; font-size: 1rem; }
+
+  .empty-state {
+    background: var(--off);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--mid);
+    font-size: 0.95rem;
+    margin-top: 2rem;
+  }
+  .empty-state a { color: var(--teal); font-weight: 700; }
+</style>

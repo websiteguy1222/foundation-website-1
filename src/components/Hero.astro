@@ -1,0 +1,21 @@
+---
+import RegisterButton from './RegisterButton.astro';
+---
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-chip">⛸ A 501(c)(3) nonprofit</span>
+      <h1>Speedskating<br>is for <em>everyone</em><br>in our community</h1>
+      <p class="hero-sub">
+        Let's Skate Foundation runs <strong>Elmbrook Speedskating</strong> — the
+        first and only school-district speed skating club in the nation.
+        All ages, all levels, everyone welcome.
+      </p>
+      <div class="hero-btns">
+        <RegisterButton variant="primary" label="⛸ Register to skate" />
+        <a href="/about" class="btn-outline">Learn our story</a>
+      </div>
+    </div>
+  </div>
+  <div class="ice-floor" aria-hidden="true"></div>
+</section>

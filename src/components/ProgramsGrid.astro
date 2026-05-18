@@ -1,0 +1,44 @@
+---
+import RegisterButton from './RegisterButton.astro';
+---
+<section class="section programs">
+  <div class="sec-inner">
+    <div class="label">
+      <span class="label-dot" aria-hidden="true"></span>
+      What we offer
+    </div>
+    <h2 class="heading">Programs for <em>every skater</em></h2>
+    <div class="prog-grid">
+      <article class="prog-card">
+        <div class="prog-icon prog-icon-green" aria-hidden="true">☀️</div>
+        <h3 class="prog-title">Summer ice camp</h3>
+        <p class="prog-desc">
+          Five days of intensive training at the Pettit. On-ice technique
+          and dryland conditioning to build real speed.
+        </p>
+        <span class="prog-chip">Seasonal event</span>
+      </article>
+
+      <article class="prog-card">
+        <div class="prog-icon prog-icon-green" aria-hidden="true">🏅</div>
+        <h3 class="prog-title">Meets &amp; competition</h3>
+        <p class="prog-desc">
+          Local, state, and national meets. Everyone participates — as a
+          skater, a volunteer, and a teammate.
+        </p>
+        <span class="prog-chip">All levels</span>
+      </article>
+
+      <article class="prog-card is-teal">
+        <div class="prog-icon prog-icon-pink" aria-hidden="true">⛸</div>
+        <h3 class="prog-title">Try it free — then join!</h3>
+        <p class="prog-desc">
+          New skaters get two practices completely free — no commitment, no cost.
+          Equipment rentals available. When you're ready, register at our club site.
+        </p>
+        <span class="prog-chip">New skaters welcome</span>
+        <RegisterButton label="Register →" />
+      </article>
+    </div>
+  </div>
+</section>

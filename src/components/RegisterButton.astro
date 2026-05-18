@@ -1,0 +1,45 @@
+---
+// Reusable Register CTA — always points at Elmbrook Speedskating, the
+// operational registration platform run by Let's Skate Foundation.
+//
+// Naming the destination ("Register at Elmbrook Speedskating") instead of
+// generic "Register Now" prevents the brand-confusion problem when parents
+// follow the link and land on a different domain.
+interface Props {
+  class?: string;
+  variant?: 'primary' | 'outline' | 'pink';
+  label?: string;
+  showSubtitle?: boolean;
+}
+const {
+  class: className,
+  variant = 'primary',
+  label = 'Register at Elmbrook Speedskating →',
+  showSubtitle = false,
+} = Astro.props;
+
+const variantClass =
+  variant === 'outline' ? 'btn-outline' :
+  variant === 'pink' ? 'btn-pink' :
+  'btn-primary';
+
+const finalClass = className ?? variantClass;
+---
+<a
+  href="https://www.elmbrookspeedskating.org/register"
+  class={finalClass}
+  aria-label="Go to Elmbrook Speedskating to register"
+>
+  {label}
+</a>
+{showSubtitle && (
+  <p class="register-subtitle">You'll be taken to our club site to complete signup.</p>
+)}
+<style>
+  .register-subtitle {
+    font-size: 0.78rem;
+    color: var(--mid);
+    margin-top: 0.5rem;
+    font-weight: 500;
+  }
+</style>

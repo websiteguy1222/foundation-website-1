@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page not found" description="That page doesn't exist.">
+  <section class="section">
+    <div class="sec-inner not-found">
+      <div class="not-found-emoji" aria-hidden="true">⛸</div>
+      <h1 class="heading">That page took a fall</h1>
+      <p class="body-text">
+        We couldn't find what you're looking for. Try the home page,
+        or head straight to <a href="/programs">programs</a>,
+        <a href="/donate">donate</a>, or
+        <a href="https://www.elmbrookspeedskating.org/register">register at Elmbrook Speedskating</a>.
+      </p>
+      <div class="not-found-actions">
+        <a href="/" class="btn-primary">Back to home</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found { text-align: center; max-width: 560px; margin: 0 auto; padding: 3rem 0; }
+  .not-found-emoji { font-size: 4rem; margin-bottom: 1rem; }
+  .not-found h1.heading { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+  .not-found .body-text { margin: 1rem 0 2rem; }
+  .not-found a { color: var(--teal); font-weight: 700; }
+  .not-found-actions { margin-top: 1rem; }
+</style>

@@ -1,0 +1,36 @@
+---
+import RegisterButton from './RegisterButton.astro';
+---
+<section class="section cta">
+  <div class="sec-inner">
+    <div class="cta-inner">
+      <div class="cta-emoji" aria-hidden="true">⛸</div>
+      <div class="label" style="justify-content:center">
+        <span class="label-dot" aria-hidden="true"></span>
+        Get on the Ice
+      </div>
+      <h2 class="heading">Ready to skate?<br><em>Let's go!</em></h2>
+      <p>
+        Join the only school district speedskating club in the nation.
+        All skill levels welcome, and new skaters can try two practices for free!
+      </p>
+      <div class="cta-btns">
+        <RegisterButton variant="primary" label="⛸ Register Now" />
+        <a href="/about" class="btn-secondary">About the Club</a>
+        <a href="/resources" class="btn-secondary">View Resources</a>
+      </div>
+      <p class="cta-note">
+        New to skating? <strong>Your first two practices are free.</strong>
+        Equipment rentals available.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Make the primary CTA button visually heavier than the secondaries */
+  .cta-btns :global(.btn-primary) {
+    font-size: 1rem;
+    padding: 16px 36px;
+  }
+</style>

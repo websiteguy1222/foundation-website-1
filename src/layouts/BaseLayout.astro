@@ -1,0 +1,69 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/theme.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Let's Skate Foundation",
+  description = "Let's Skate Foundation is a 501(c)(3) nonprofit empowering youth through inclusive access to speed skating. We run Elmbrook Speedskating, the nation's first school-district speed skating club.",
+  ogImage = '/og.png',
+} = Astro.props;
+
+const fullTitle = title === "Let's Skate Foundation"
+  ? title
+  : `${title} — Let's Skate Foundation`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://letsskate.org').toString();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+    />
+
+    <!-- Organization schema for SEO -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'NGO',
+      name: "Let's Skate Foundation",
+      alternateName: 'LSF',
+      url: 'https://letsskate.org',
+      description: "501(c)(3) nonprofit empowering youth through inclusive access to speed skating.",
+      taxID: '99-4111339',
+      areaServed: 'Milwaukee, WI',
+    })} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

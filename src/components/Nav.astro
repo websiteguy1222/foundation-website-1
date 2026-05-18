@@ -1,0 +1,23 @@
+---
+import RegisterButton from './RegisterButton.astro';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const linkProps = (href: string) =>
+  href === path ? { 'aria-current': 'page' as const } : {};
+---
+<nav class="nav" aria-label="Primary">
+  <a class="logo" href="/" aria-label="Let's Skate Foundation home">
+    <img src="/Foundation Logo.jpg" alt="Let's Skate Foundation" class="logo-img" />
+  </a>
+  <div class="nav-links">
+    <a href="/about" {...linkProps('/about')}>About</a>
+    <a href="/programs" {...linkProps('/programs')}>Programs</a>
+    <a href="/resources" {...linkProps('/resources')}>Resources</a>
+    <a href="/gallery" {...linkProps('/gallery')}>Gallery</a>
+    <a href="/blog" {...linkProps('/blog')}>News</a>
+    <a href="/contact" {...linkProps('/contact')}>Contact</a>
+  </div>
+  <div class="nav-actions">
+    <a href="/donate" class="btn-outline btn-sm" {...linkProps('/donate')}>Donate</a>
+    <RegisterButton class="btn-primary btn-sm" />
+  </div>
+</nav>

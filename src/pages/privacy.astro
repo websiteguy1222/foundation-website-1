@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const lastUpdated = 'May 17, 2026';
+---
+<BaseLayout title="Privacy policy" description="Let's Skate Foundation's privacy policy: what we collect, how we use it, and how to contact us about your data.">
+  <section class="section">
+    <div class="sec-inner privacy">
+      <div class="label"><span class="label-dot" aria-hidden="true"></span> Last updated: {lastUpdated}</div>
+      <h1 class="heading">Privacy policy</h1>
+
+      <p>
+        Let's Skate Foundation ("LSF," "we," "our") is a 501(c)(3) nonprofit
+        organization. EIN 99-4111339. This policy explains what we collect
+        on letsskate.org, how we use it, and how to reach us about your data.
+      </p>
+
+      <h2>What we collect</h2>
+      <p>
+        We collect the minimum we need to run the foundation, and nothing more.
+      </p>
+      <ul>
+        <li>
+          <strong>Contact form submissions.</strong> If you write to us
+          through the contact form, we receive your name, email address,
+          and your message. These are forwarded to admin@letsskate.org.
+        </li>
+        <li>
+          <strong>Donations.</strong> When you donate, our payment
+          processor Stripe collects your name, email, billing address,
+          and payment information. We never see or store your card number.
+          We retain donor records (name, email, mailing address, donation
+          amount, and date) to issue IRS-required acknowledgment letters
+          and for our own bookkeeping.
+        </li>
+        <li>
+          <strong>Basic analytics.</strong> We may use privacy-friendly
+          analytics that count visits without tracking individuals or
+          using cookies for advertising.
+        </li>
+      </ul>
+
+      <h2>What we don't do</h2>
+      <ul>
+        <li>We don't sell, rent, or share your personal information with third parties for marketing.</li>
+        <li>We don't use advertising trackers or third-party advertising cookies.</li>
+        <li>We don't build profiles of individual visitors.</li>
+      </ul>
+
+      <h2>Registration on Elmbrook Speedskating</h2>
+      <p>
+        Skating registration is handled by our partner platform at
+        <a href="https://www.elmbrookspeedskating.org">elmbrookspeedskating.org</a>.
+        That site has its own privacy policy. We recommend reviewing it
+        before registering.
+      </p>
+
+      <h2>Donor records</h2>
+      <p>
+        We retain donor records for at least seven years to comply with
+        IRS recordkeeping requirements. You can request a copy of your
+        donation history or ask us to delete non-required data at any time
+        by emailing
+        <a href="mailto:admin@letsskate.org">admin@letsskate.org</a>.
+      </p>
+
+      <h2>Children's data</h2>
+      <p>
+        letsskate.org is not directed at children, and we do not knowingly
+        collect personal information from children under 13. Information
+        about youth participants in our programs is collected only through
+        the registration platform with parental consent, and is governed
+        by that platform's privacy policy.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions, requests, or concerns? Email
+        <a href="mailto:admin@letsskate.org">admin@letsskate.org</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .privacy { max-width: 720px; }
+  .privacy h1.heading { font-size: clamp(2.2rem, 4vw, 3rem); }
+  .privacy h2 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    color: var(--dark);
+  }
+  .privacy p, .privacy li {
+    font-size: 0.95rem;
+    color: var(--mid);
+    line-height: 1.85;
+    margin-bottom: 0.75rem;
+  }
+  .privacy ul { padding-left: 1.5rem; }
+  .privacy a { color: var(--teal); font-weight: 700; }
+  .privacy strong { color: var(--dark); }
+</style>

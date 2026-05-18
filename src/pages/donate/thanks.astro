@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Thank you for your gift"
+  description="Thank you for supporting Let's Skate Foundation."
+>
+  <section class="thanks">
+    <div class="sec-inner thanks-inner">
+      <div class="thanks-emoji" aria-hidden="true">⛸</div>
+      <h1 class="heading">Thank you. Truly.</h1>
+      <p class="thanks-sub">
+        Your gift puts more kids on the ice. You'll receive a receipt by
+        email shortly — keep it for your records, it doubles as your IRS
+        tax acknowledgment.
+      </p>
+      <div class="thanks-actions">
+        <a href="/" class="btn-primary">Back home</a>
+        <a href="/about" class="btn-outline">Read our story</a>
+      </div>
+      <p class="thanks-note">
+        Questions about your donation? Email
+        <a href="mailto:admin@letsskate.org">admin@letsskate.org</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thanks {
+    background: linear-gradient(180deg, var(--teal-xlt), var(--white));
+    padding: 6rem 2.5rem;
+  }
+  .thanks-inner {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .thanks-emoji { font-size: 4rem; margin-bottom: 1rem; }
+  .thanks-sub {
+    font-size: 1.05rem;
+    color: var(--mid);
+    margin: 1rem auto 2rem;
+    line-height: 1.85;
+    max-width: 540px;
+  }
+  .thanks-actions {
+    display: flex; justify-content: center; gap: 12px;
+    flex-wrap: wrap; margin-bottom: 2rem;
+  }
+  .thanks-note {
+    font-size: 0.88rem; color: var(--mid);
+  }
+  .thanks-note a { color: var(--teal); font-weight: 700; }
+</style>

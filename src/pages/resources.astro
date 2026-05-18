@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Resources"
+  description="Practice schedules, gear guides, and helpful links for skaters and families in the Elmbrook Speedskating program."
+>
+  <section class="section">
+    <div class="sec-inner page-hero">
+      <div class="label">
+        <span class="label-dot" aria-hidden="true"></span>
+        For skaters &amp; families
+      </div>
+      <h1 class="heading">Resources</h1>
+      <p class="body-text page-lede">
+        Practice schedules, gear guides, and helpful links for current and
+        prospective skaters. More coming soon.
+      </p>
+    </div>
+
+    <div class="sec-inner resources-grid">
+      <article class="resource-card">
+        <div class="resource-icon" aria-hidden="true">📅</div>
+        <h2 class="resource-title">Practice schedule</h2>
+        <p class="resource-desc">
+          Current and upcoming practice times at the Pettit National Ice
+          Center, plus camp dates.
+        </p>
+        <p class="resource-cta">Coming soon</p>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon" aria-hidden="true">⛸</div>
+        <h2 class="resource-title">Gear guide</h2>
+        <p class="resource-desc">
+          What to wear for your first practice, equipment rentals, and
+          when to think about buying your own skates.
+        </p>
+        <p class="resource-cta">Coming soon</p>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon" aria-hidden="true">🏁</div>
+        <h2 class="resource-title">Meets &amp; competitions</h2>
+        <p class="resource-desc">
+          Local, state, and national meet calendars and what to expect at
+          your first race.
+        </p>
+        <p class="resource-cta">Coming soon</p>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon" aria-hidden="true">❓</div>
+        <h2 class="resource-title">FAQ</h2>
+        <p class="resource-desc">
+          The questions parents ask us most: cost, age range, time
+          commitment, safety, and more.
+        </p>
+        <p class="resource-cta">Coming soon</p>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon" aria-hidden="true">📍</div>
+        <h2 class="resource-title">Pettit National Ice Center</h2>
+        <p class="resource-desc">
+          Directions, parking, and visitor info for our home ice in
+          Milwaukee.
+        </p>
+        <p class="resource-cta">
+          <a href="https://www.thepettit.com" rel="noopener">thepettit.com →</a>
+        </p>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon" aria-hidden="true">🔗</div>
+        <h2 class="resource-title">Elmbrook Speedskating</h2>
+        <p class="resource-desc">
+          Our partner club site for registration, member accounts, and
+          season updates.
+        </p>
+        <p class="resource-cta">
+          <a href="https://www.elmbrookspeedskating.org" rel="noopener">elmbrookspeedskating.org →</a>
+        </p>
+      </article>
+    </div>
+
+    <div class="sec-inner resources-contact">
+      <p class="body-text">
+        Don't see what you need? Email us at
+        <a href="mailto:admin@letsskate.org">admin@letsskate.org</a> and
+        we'll point you in the right direction.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { text-align: center; padding-bottom: 1rem; }
+  .page-hero .label { justify-content: center; }
+  .page-hero h1.heading { font-size: clamp(2.2rem, 4vw, 3rem); }
+  .page-lede { max-width: 640px; margin: 1rem auto 0; font-size: 1rem; }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .resource-card {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .resource-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--teal);
+    box-shadow: 0 16px 40px rgba(0,119,139,0.08);
+  }
+  .resource-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .resource-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+  .resource-desc {
+    font-size: 0.88rem;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  .resource-cta {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--teal);
+  }
+  .resource-cta a { color: var(--teal); text-decoration: none; }
+  .resource-cta a:hover { text-decoration: underline; }
+
+  .resources-contact {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  .resources-contact a { color: var(--teal); font-weight: 700; }
+
+  @media (max-width: 880px) { .resources-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .resources-grid { grid-template-columns: 1fr; } }
+</style>
