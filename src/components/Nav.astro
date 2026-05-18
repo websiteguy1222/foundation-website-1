@@ -4,9 +4,9 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const linkProps = (href: string) =>
   href === path ? { 'aria-current': 'page' as const } : {};
 ---
-<nav class="nav" aria-label="Primary">
+<nav class="nav" aria-label="Primary" id="main-nav">
   <a class="logo" href="/" aria-label="Let's Skate Foundation home">
-    <img src="/Foundation Logo.jpg" alt="Let's Skate Foundation" class="logo-img" />
+    <img src={`./Foundation Logo.jpg`} alt="Let's Skate Foundation" class="logo-img" />
   </a>
   <div class="nav-links">
     <a href="/about" {...linkProps('/about')}>About</a>
@@ -20,4 +20,102 @@ const linkProps = (href: string) =>
     <a href="/donate" class="btn-outline btn-sm" {...linkProps('/donate')}>Donate</a>
     <RegisterButton class="btn-primary btn-sm" />
   </div>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <a href="/about" {...linkProps('/about')}>About</a>
+  <a href="/programs" {...linkProps('/programs')}>Programs</a>
+  <a href="/resources" {...linkProps('/resources')}>Resources</a>
+  <a href="/gallery" {...linkProps('/gallery')}>Gallery</a>
+  <a href="/blog" {...linkProps('/blog')}>News</a>
+  <a href="/contact" {...linkProps('/contact')}>Contact</a>
+  <div class="drawer-actions">
+    <a href="/donate" class="btn-outline btn-sm" {...linkProps('/donate')}>Donate</a>
+    <RegisterButton class="btn-primary btn-sm" />
+  </div>
+</div>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+  const drawer = document.getElementById('nav-drawer');
+  const nav = document.getElementById('main-nav');
+
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    drawer?.setAttribute('aria-hidden', String(!open));
+  });
+
+  drawer?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav?.classList.remove('nav-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>
+
+<style>
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-toggle span {
+    display: block;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  :global(.nav-open) .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  :global(.nav-open) .nav-toggle span:nth-child(2) { opacity: 0; }
+  :global(.nav-open) .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-drawer {
+    display: none;
+    position: fixed;
+    top: 90px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    padding: 1.25rem;
+    flex-direction: column;
+    gap: 0;
+    z-index: 99;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .nav-drawer a {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--mid);
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-drawer a:hover,
+  .nav-drawer a[aria-current="page"] { color: var(--teal); }
+  .drawer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 720px) {
+    .nav-links,
+    .nav-actions { display: none; }
+    .nav-toggle { display: flex; }
+    :global(.nav-open) + .nav-drawer { display: flex; }
+  }
+</style>

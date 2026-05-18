@@ -9,12 +9,14 @@ interface Props {
   class?: string;
   variant?: 'primary' | 'outline' | 'pink';
   label?: string;
+  href?: string;
   showSubtitle?: boolean;
 }
 const {
   class: className,
   variant = 'primary',
-  label = 'Register at Elmbrook Speedskating →',
+  label = 'Try Speedskating for Free',
+  href = 'https://www.elmbrookspeedskating.org/register',
   showSubtitle = false,
 } = Astro.props;
 
@@ -26,7 +28,7 @@ const variantClass =
 const finalClass = className ?? variantClass;
 ---
 <a
-  href="https://www.elmbrookspeedskating.org/register"
+  href={href}
   class={finalClass}
   aria-label="Go to Elmbrook Speedskating to register"
 >

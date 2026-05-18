@@ -12,10 +12,44 @@ import RegisterButton from './RegisterButton.astro';
         All ages, all levels, everyone welcome.
       </p>
       <div class="hero-btns">
-        <RegisterButton variant="primary" label="⛸ Register to skate" />
+        <RegisterButton variant="primary" label="Register for Summer Camp" href="https://www.speedskatingevents.org/2026letsskate"/>
         <a href="/about" class="btn-outline">Learn our story</a>
       </div>
     </div>
+    <div class="hero-photos" aria-hidden="true">
+      <div class="hero-photo-card hero-photo-card--top">
+        <img src={`${import.meta.env.BASE_URL}skate-photo-1.jpeg`} alt="Skaters at Elmbrook Speedskating" />
+      </div>
+      <div class="hero-photo-card hero-photo-card--bottom">
+        <img src={`${import.meta.env.BASE_URL}skate-photo-2.jpeg`} alt="Skaters at Elmbrook Speedskating" />
+      </div>
+    </div>
   </div>
-  <div class="ice-floor" aria-hidden="true"></div>
 </section>
+
+<style>
+  .hero-photos {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .hero-photo-card {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.14);
+    width: 100%;
+    height: 290px;
+  }
+  .hero-photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .hero-photos {
+      margin-top: 2rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+</style>
