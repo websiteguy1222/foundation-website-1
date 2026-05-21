@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import InfoBand from '../components/InfoBand.astro';
-import MissionSection from '../components/MissionSection.astro';
+import ValuesSection from '../components/ValuesSection.astro';
 import ProgramsGrid from '../components/ProgramsGrid.astro';
-import CTASection from '../components/CTASection.astro';
 import PettitSection from '../components/PettitSection.astro';
 ---
 <BaseLayout
@@ -12,6 +10,7 @@ import PettitSection from '../components/PettitSection.astro';
   description="Let's Skate Foundation is a 501(c)(3) nonprofit empowering youth through inclusive access to speed skating. We run Elmbrook Speedskating in partnership with the Elmbrook School District."
 >
   <Hero />
+  <ValuesSection />
   <ProgramsGrid />
   <PettitSection />
 </BaseLayout>
