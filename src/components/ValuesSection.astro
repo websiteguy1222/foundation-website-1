@@ -1,0 +1,55 @@
+---
+const values = [
+  { emoji: '🤝', label: 'Community Building' },
+  { emoji: '🙌', label: 'Inclusion' },
+  { emoji: '😄', label: 'Fun' },
+  { emoji: '🏆', label: 'Sportsmanship' },
+  { emoji: '🏅', label: 'Continuing the Midwest Olympic Legacy' },
+];
+---
+<section class="values-strip">
+  <div class="values-inner">
+    {values.map(v => (
+      <div class="value-item">
+        <div class="value-icon" aria-hidden="true">{v.emoji}</div>
+        <span class="value-label">{v.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .values-strip {
+    background: var(--white);
+    padding: 3rem 2.5rem;
+    border-top: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
+  }
+  .values-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .value-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+    max-width: 140px;
+  }
+  .value-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+  }
+  .value-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--mid);
+    line-height: 1.35;
+  }
+</style>

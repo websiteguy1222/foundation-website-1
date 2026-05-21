@@ -1,5 +1,4 @@
 ---
-import RegisterButton from './RegisterButton.astro';
 ---
 <section class="section pettit">
   <div class="sec-inner">
@@ -18,14 +17,16 @@ import RegisterButton from './RegisterButton.astro';
           U.S. Winter Olympic speed skating team since 1932. That's the
           legacy we skate on.
         </p>
-        
       </div>
       <div class="pettit-cards">
         <div class="pettit-card">
           <div class="pettit-card-icon" aria-hidden="true">📍</div>
           <div>
             <div class="pettit-card-lbl">Location</div>
-            <div class="pettit-card-val">Pettit National Ice Center, Milwaukee, WI</div>
+            <div class="pettit-card-val">
+              Pettit National Ice Center, Milwaukee, WI<br />
+              500 S 84th St, Milwaukee, WI 53214
+            </div>
           </div>
         </div>
         <div class="pettit-card">
@@ -37,24 +38,75 @@ import RegisterButton from './RegisterButton.astro';
             </div>
           </div>
         </div>
-        <div class="pettit-card">
-          <div class="pettit-card-icon" aria-hidden="true">⛸</div>
-          <div>
-            <div class="pettit-card-lbl">Tracks</div>
-            <div class="pettit-card-val">Short track (111m) &amp; long track (400m)</div>
-          </div>
-        </div>
-        <div class="pettit-card">
-          <div class="pettit-card-icon" aria-hidden="true">⛑</div>
-          <div>
-            <div class="pettit-card-lbl">Safety</div>
-            <div class="pettit-card-val">
-              Helmets required for all short track skaters and all long
-              track skaters under 18.
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .pettit {
+    background: var(--off);
+  }
+  .pettit .label {
+    color: var(--teal);
+  }
+  .pettit .label-dot {
+    background: var(--teal);
+  }
+  .pettit h2.heading {
+    color: var(--dark);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+  }
+  .pettit h2.heading em {
+    color: var(--teal);
+  }
+  .pettit .body-text {
+    color: var(--mid);
+    margin-bottom: 2rem;
+  }
+  .pettit-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pettit-card {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.4rem 1.8rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .pettit-card:hover {
+    border-color: var(--teal);
+  }
+  .pettit-card-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .pettit-card-lbl {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 4px;
+  }
+  .pettit-card-val {
+    font-size: 0.95rem;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .pettit-card-val a {
+    color: var(--teal);
+    font-weight: 700;
+  }
+  @media (max-width: 720px) {
+    .pettit-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>
