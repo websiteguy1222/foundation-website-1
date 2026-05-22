@@ -53,33 +53,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </article>
 
       <article class="resource-card">
-        <h2 class="resource-title">FAQ</h2>
-        <p class="resource-desc">
-          The questions parents ask us most: cost, age range, time
-          commitment, safety, and more.
-        </p>
-        <p class="resource-cta">Coming soon</p>
-      </article>
-
-      <article class="resource-card">
-        <h2 class="resource-title">Meets & Competitions</h2>
-        <p class="resource-desc">
-          Local, state, and national meet calendars and what to expect at your first race.
-        </p>
-        <p class="resource-cta">
-          Coming soon
-        </p>
-      </article>
-
-      <article class="resource-card">
-        <h2 class="resource-title">Elmbrook Speedskating</h2>
-        <p class="resource-desc">
-          Our partner club site for registration, member accounts, and
-          season updates.
-        </p>
-        <p class="resource-cta">
-          <a href="https://www.elmbrookspeedskating.org" rel="noopener">elmbrookspeedskating.org →</a>
-        </p>
+        <h2 class="resource-title">Equipment</h2>
+        <div class="resource-desc">
+          <p class="equip-label">Required:</p>
+          <ul>
+            <li>Speed Skates (rental provided)</li>
+            <li>Helmet (inline, bicycle, or hockey helmets are acceptable)</li>
+            <li>Gloves</li>
+          </ul>
+          <p class="equip-label">Strongly recommended:</p>
+          <ul>
+            <li>Knee pads and elbow pads</li>
+          </ul>
+        </div>
       </article>
     </div>
 
@@ -117,7 +103,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border-color: var(--teal);
     box-shadow: 0 16px 40px rgba(0,119,139,0.08);
   }
-.resource-title {
+  .equip-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .resource-card li {
+    font-size: 0.78rem;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-left: 1rem;
+  }
+  .resource-title {
     font-family: var(--font-serif);
     font-size: 1.2rem;
     font-weight: 600;
