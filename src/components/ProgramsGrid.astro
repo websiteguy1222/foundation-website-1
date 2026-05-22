@@ -3,7 +3,16 @@ import RegisterButton from './RegisterButton.astro';
 ---
 <section class="section programs">
   <div class="sec-inner">
-    <h2 class="heading">Skate for All. <em>Inspire for Life.</em></h2>
+    <div class="programs-header">
+      <div>
+        <div class="label">
+          <span class="label-dot" aria-hidden="true"></span>
+          What we offer
+        </div>
+        <h2 class="heading">Programs for <em>every skater</em></h2>
+      </div>
+      <p class="programs-tagline">Skate for All. Inspire for Life.</p>
+    </div>
     <div class="prog-grid">
       <article class="prog-card">
         <h3 class="prog-title">Training &amp; Free Tryout</h3>
@@ -25,7 +34,7 @@ import RegisterButton from './RegisterButton.astro';
           <li>School District Speedskating Integration Events</li>
           <li>Seminars &amp; Educational Workshops</li>
         </ul>
-        <RegisterButton label="More Information" href="/programs" />
+        <RegisterButton label="More Information" href="/programs"  />
       </article>
 
       <article class="prog-card">
@@ -33,18 +42,30 @@ import RegisterButton from './RegisterButton.astro';
         <ul class="prog-list">
           <li>Let's Skate Ambassador Program</li>
           <li>Let's Skate Coach Mentorship Program</li>
-          <li>Let's Skate AI Lab</li>
         </ul>
-        <RegisterButton label="Learn More" href="/programs" />
+        <RegisterButton label="Learn More" href="/programs"  />
       </article>
     </div>
   </div>
 </section>
 
 <style>
+  .programs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .programs-tagline {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--mid);
+  }
   .heading {
     font-size: clamp(2.4rem, 4vw, 3.4rem);
-    margin-bottom: 0.75rem;
   }
   .prog-card {
     display: flex;
