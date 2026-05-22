@@ -3,13 +3,20 @@ import RegisterButton from './RegisterButton.astro';
 ---
 <section class="section programs">
   <div class="sec-inner">
-    <h2 class="heading">Skate for All. <em>Inspire for Life.</em></h2>
+    <div class="programs-header">
+      <div>
+        <div class="label">
+          <span class="label-dot" aria-hidden="true"></span>
+          What we offer
+        </div>
+      </div>
+    </div>
     <div class="prog-grid">
       <article class="prog-card">
         <h3 class="prog-title">Training &amp; Free Tryout</h3>
         <ul class="prog-list">
           <li>No prior speedskating experience required</li>
-          <li>Open to all students ages 4–18</li>
+          <li>Open to all students ages 4-18</li>
           <li>Speedskate rental provided</li>
           <li>Led by US Speedskating Certified Coaches</li>
           <li>Managed by Elmbrook Speedskating Club | Let's Skate Foundation</li>
@@ -26,6 +33,7 @@ import RegisterButton from './RegisterButton.astro';
           <li>Seminars &amp; Educational Workshops</li>
         </ul>
         <RegisterButton label="More Information" href="/programs" />
+        <RegisterButton label="More Information" href="/programs" />
       </article>
 
       <article class="prog-card">
@@ -35,6 +43,7 @@ import RegisterButton from './RegisterButton.astro';
           <li>Let's Skate Coach Mentorship Program</li>
           <li>Let's Skate AI Lab</li>
         </ul>
+        <RegisterButton label="Learn More" href="/programs" />
         <RegisterButton label="Learn More" href="/programs" />
       </article>
     </div>
