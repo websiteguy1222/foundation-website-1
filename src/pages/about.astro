@@ -1,68 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import MissionSection from '../components/MissionSection.astro';
+import Timeline from '../components/Timeline.astro';
 ---
 <BaseLayout
   title="About"
   description="Let's Skate Foundation is the 501(c)(3) nonprofit that runs Elmbrook Speedskating, the nation's first school-district speed skating club."
 >
-  <MissionSection />
   <section class="section">
     <div class="sec-inner page-hero">
-      <div class="label"><span class="label-dot" aria-hidden="true"></span> Who we are</div>
-      <h1 class="heading">About Let's Skate Foundation</h1>
-      <p class="body-text page-lede">
-        Let's Skate Foundation is a 501(c)(3) nonprofit empowering youth
-        through inclusive access to speed skating by partnering with school
-        districts to build community and opportunity.
-      </p>
+      <div class="label"><span class="label-dot" aria-hidden="true"></span> Our story</div>
+      <h1 class="heading">The Journey of Let's Skate</h1>
     </div>
-
-    <div class="sec-inner about-body">
-      <h2 class="heading-sm">Our story</h2>
-      <p class="body-text">
-        Through our partnership with the Elmbrook School District over the
-        past four years, we have taught over three hundred kids how to
-        skate and elevated ten skaters to the national level in short and
-        long track competition. Today, the program we run —
-        <strong>Elmbrook Speedskating</strong> — is the first and only
-        school-district speed skating club in the entire nation.
-      </p>
-
-      <h2 class="heading-sm">Why two names?</h2>
-      <p class="body-text">
-        <strong>Let's Skate Foundation</strong> is the 501(c)(3) — the
-        nonprofit legal entity. <strong>Elmbrook Speedskating</strong> is
-        the program we run on the ground, in partnership with the
-        Elmbrook School District. When you register to skate, you're
-        signing up with the club. When you donate, you're giving to the
-        foundation. Two names, one team, one mission.
-      </p>
-
-      <h2 class="heading-sm">Get involved</h2>
-      <p class="body-text">
-        Whether you want to skate, volunteer, sponsor a kid, or chip in
-        $25 — there's a place for you. Email
-        <a href="mailto:admin@letsskate.org">admin@letsskate.org</a>
-        and we'll find the right way to plug you in.
-      </p>
+    <div class="sec-inner">
+      <Timeline />
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .page-hero { text-align: center; padding-bottom: 2rem; }
+  .page-hero { text-align: center; padding-bottom: 1rem; }
   .page-hero .label { justify-content: center; }
   .page-hero h1.heading { font-size: clamp(2.2rem, 4vw, 3rem); }
-  .page-lede { max-width: 640px; margin: 1rem auto 0; font-size: 1.05rem; }
-  .about-body { max-width: 720px; }
-  .heading-sm {
-    font-family: var(--font-serif);
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin: 2.5rem 0 0.5rem;
-    color: var(--dark);
-  }
-  .body-text strong { color: var(--dark); }
-  .body-text a { color: var(--teal); font-weight: 700; }
 </style>

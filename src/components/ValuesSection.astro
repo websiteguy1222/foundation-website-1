@@ -1,17 +1,17 @@
 ---
 const values = [
-  { emoji: '🤝', label: 'Community Building' },
-  { emoji: '🙌', label: 'Inclusion' },
-  { emoji: '😄', label: 'Fun' },
-  { emoji: '🏆', label: 'Sportsmanship' },
-  { emoji: '🏅', label: 'Continuing the Midwest Olympic Legacy' },
+  { img: '/teamwork-2.png', label: 'Community Building' },
+  { img: '/teamwork.png', label: 'Inclusion' },
+  { img: '/happiness.png', label: 'Fun' },
+  { img: '/team.png', label: 'Sportsmanship' },
+  { img: '/Olympic_rings_without_rims.svg.png', label: 'Continuing the Midwest Olympic Legacy' },
 ];
 ---
 <section class="values-strip">
   <div class="values-inner">
     {values.map(v => (
       <div class="value-item">
-        <div class="value-icon" aria-hidden="true">{v.emoji}</div>
+        <img src={v.img} alt={v.label} class="value-icon" />
         <span class="value-label">{v.label}</span>
       </div>
     ))}
@@ -43,8 +43,9 @@ const values = [
     max-width: 140px;
   }
   .value-icon {
-    font-size: 3.5rem;
-    line-height: 1;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
   }
   .value-label {
     font-size: 0.85rem;

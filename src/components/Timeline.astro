@@ -1,0 +1,230 @@
+---
+const years = [
+  {
+    year: "2020",
+    events: [
+      { date: "August 2020", image: "/Elmbrook Speedskating Club First Meeting.jpg", alt: "Elmbrook Speedskating Club", caption: "Elmbrook Speedskating Club was formed as the only school district speedskating club in the nation" },
+    ],
+  },
+  {
+    year: "2021",
+    events: [
+      { date: "March 2021", image: "/Elmbrook Speedskating Club Informational Session.jpg", alt: "Elmbrook Informational Session", caption: "First informational session" },
+      { date: "April 2021", image: "/Elmbrook Speedskating Club First Training Session.jpg", alt: "Elmbrook First Training Session", caption: "First Training Session!" },
+      { date: "May 2021", image: "/Elmbrook Speedskating Club Bonnie Blair Guest Appearance.jpg", alt: "Bonnie Blair Guest Appearance", caption: "Bonnie Blair (5X Olympian) Guest Appearance & Dedication to Sport Award Presentation" },
+      { date: "July 2021", image: "/Elmbrook Speedskating Club Toyota Championships.jpg", alt: "First Elmbrook Competition", caption: "First Regional Competition at Toyota Speedskating Championships" },
+      { date: "November 2021", image: "/Elmbrook Speedskating Club 2021 Fall Session.jpg", alt: "Elmbrook 2021 Fall Training Season", caption: "Elmbrook 2021 Fall Training Season" },
+      { date: "November 2021", image: "/Elmbrook Speedskating Club 2021 Great Lakes.jpg", alt: "Elmbrook 2021 Great Lakes", caption: "Elmbrook Speedskaters at 2021 Great Lakes Competition" },
+    ],
+  },
+  {
+    year: "2022",
+    events: [
+      { date: "January 2022", image: "/Elmbrook Speedskating Club 2021 Winter Session.jpg", alt: "Elmbrook 2021-2022 Winter Training Season", caption: "Elmbrook 2021 Winter Training Season" },
+      { date: "March 2022", image: "/Elmbrook Speedskating Club Land of Lincoln.jpg", alt: "Elmbrook at Land of Lincoln", caption: "Elmbrook Speedskaters at Land of Lincoln Competition" },
+      { date: "June 2022", image: "/Elmbrook Speedskating Club 2022 Summer Camp.jpg", alt: "Elmbrook 2022 Summer Camp", caption: "Elmbrook 2022 Summer Camp" },
+      { date: "July 2022", image: "/Elmbrook Speedskating Club 2022 Burpee Championships.jpg", alt: "Elmbrook 2022 Burpee Pinnacle Championships", caption: "Elmbrook Speedskaters at 2022 Burpee Pinnacle Championships" },
+      { date: "October 2022", image: "/Elmbrook Speedskating Club 2022 Silver Skates.jpg", alt: "Elmbrook 2022 Silver Skates", caption: "Elmbrook Speedskaters at 2022 Silver Skates Competition" },
+      { date: "November 2022", image: "/Elmbrook Speedskating Club 2022 Great Lakes.jpg", alt: "Elmbrook 2022 Great Lakes", caption: "Elmbrook Speedskaters at 2023 Great Lakes Competition" },
+    ],
+  },
+  {
+    year: "2023",
+    events: [
+      { date: "March 2023", image: "/Elmbrook Speedskating 2022-2023 Season.jpg", alt: "Elmbrook 2022-2023 Season", caption: "Final practice of 2022-2023 Elmbrook Speedskating Club Season" },
+      { date: "July 2023", image: "/Elmbrook Speedskating Club 2023 Summer Session.jpg", alt: "Elmbrook 2023 Summer Session", caption: "Elmbrook 2023 Summer Training Sessions" },
+      { date: "October 2023", image: "/Elmbrook Speedskating Club 2023 Silver Skates.jpg", alt: "Elmbrook 2023 Silver Skates", caption: "Elmbrook Speedskaters at 2023 Silver Skates" },
+      { date: "November 2023", image: "/Elmbrook Speedskating Club 2023 Great Lakes.jpg", alt: "Elmbrook 2023 Great Lakes", caption: "Elmbrook Speedskaters at 2023 Great Lakes Competition" },
+      { date: "December 2023", image: "/Elmbrook Speedskating Club 2023 Winter Tryout Session.jpg", alt: "Elmbrook 2023 Winter Tryout", caption: "Elmbrook Speedskating Club 2023 Winter Tryout Session" },
+    ],
+  },
+  {
+    year: "2024",
+    events: [
+      { date: "February 2024", image: "/Elmbrook Speedskating Club Long Track Age Group 2024.jpg", alt: "US Long Track Age Group Nationals 2024", caption: "Elmbrook Speedskaters at 2024 US Long Track Speedskating Age Group Nationals" },
+      { date: "February 2024", image: "/Elmbrook Speedskating Club 2024 Northburke.jpg", alt: "Northburke Short Track Open", caption: "Elmbrook Speedskaters at Northburke Short Track Open" },
+      { date: "March 2024", image: "/Elmbrook Speedskating Club Short Track Age Group 2024.jpg", alt: "US Short Track Age Group Nationals 2024", caption: "Elmbrook Alumni who competed at the 2024 US Short Track Speedskating Age Group Nationals" },
+      { date: "March 2024", image: "/Elmbrook Speedskating Club 2024 Land of Lincoln.jpg", alt: "Land of Lincoln 2024", caption: "Elmbrook Speedskaters at Land of Lincoln" },
+      { date: "April 2024", image: "/Elmbrook Speedskating Club 2024 China Trip.jpg", alt: "Elmbrook Alumni in China", caption: "Elmbrook Alumni at the Sino-US Speedskating Invitation in Tangshan China" },
+      { date: "May 2024", image: "/Elmbrook Speedskating Club 2024 Spring Season.jpg", alt: "Elmbrook 2024 Spring Training", caption: "Elmbrook 2024 Spring Training Sessions" },
+      { date: "August 2024", image: "/Elmbrook Speedskating Club 2024 Summer.jpeg", alt: "Elmbrook 2024 Summer Camp", caption: "Elmbrook 2024 Summer Camp" },
+      { date: "September 2024", image: "/Elmbrook Speedskating Club 2024 Fall.jpg", alt: "Elmbrook 2024 Fall Training", caption: "Elmbrook 2024 Fall Training Sessions" },
+      { date: "October 2024", image: "/Elmbrook Speedskating Club 2024 Buffalo ST Meet.jpg", alt: "2024 Buffalo Speedskating Meet", caption: "Elmbrook Speedskaters at 2024 Buffalo Speedskating Meet" },
+      { date: "October 2024", image: "/Elmbrook Speedskating Club 2024 Silver Skates.jpg", alt: "2024 Silver Skates", caption: "Elmbrook Speedskaters at 2024 Silver Skates" },
+      { date: "November 2024", image: "/Elmbrook Speedskating Club 2024 Great Lakes.jpg", alt: "2024 Great Lakes", caption: "Elmbrook Speedskaters at 2024 Great Lakes" },
+    ],
+  },
+];
+---
+
+<div class="timeline-wrap">
+  <div class="timeline-line"></div>
+
+  {years.map(({ year, events }) => (
+    <details class="tl-year">
+      <summary class="tl-year-header">
+        <span class="tl-year-label">
+          <span class="tl-arrow" aria-hidden="true">▶</span>
+          {year}
+        </span>
+        <span class="tl-dot" aria-hidden="true"></span>
+      </summary>
+      <div class="tl-events">
+        {events.map(({ date, image, alt, caption }) => (
+          <figure class="tl-row">
+            <div class="tl-date">{date}</div>
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-content">
+              {image && <img src={image} alt={alt} class="tl-img" loading="lazy" />}
+              <figcaption class="tl-caption">{caption}</figcaption>
+            </div>
+          </figure>
+        ))}
+      </div>
+    </details>
+  ))}
+
+  <div class="tl-row tl-final">
+    <div class="tl-date tl-date--final">Become what's next</div>
+    <span class="tl-dot" aria-hidden="true"></span>
+    <div class="tl-content tl-caption">Join our speedskating club today!</div>
+  </div>
+</div>
+
+<style>
+  .timeline-wrap {
+    position: relative;
+    max-width: 900px;
+    margin: 2rem auto 0;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem 0 2rem;
+  }
+
+  /* Vertical line */
+  .timeline-line {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 33%;
+    transform: translateX(-50%);
+    width: 3px;
+    background: var(--teal);
+    z-index: 0;
+  }
+
+  /* Dot shared style */
+  .tl-dot {
+    position: absolute;
+    left: 33%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: var(--teal);
+    border-radius: 50%;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  /* ── Year header (summary) ── */
+  .tl-year {
+    position: relative;
+  }
+  .tl-year-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 1rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .tl-year-header::-webkit-details-marker { display: none; }
+
+  .tl-year-label {
+    width: 33%;
+    text-align: right;
+    padding-right: 2rem;
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  .tl-arrow {
+    display: inline-block;
+    transition: transform 0.2s;
+    color: var(--teal);
+    font-size: 1rem;
+  }
+  details[open] .tl-arrow {
+    transform: rotate(90deg);
+  }
+
+  /* ── Event rows ── */
+  .tl-row {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding: 1.2rem 0;
+  }
+
+  .tl-date {
+    width: 33%;
+    text-align: right;
+    padding-right: 2rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--dark);
+    padding-top: 0.2rem;
+  }
+
+  .tl-content {
+    width: 67%;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .tl-content {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  .tl-img {
+    width: 100%;
+    max-width: 260px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .tl-caption {
+    font-size: 0.95rem;
+    color: var(--mid);
+    line-height: 1.6;
+    padding-top: 0.2rem;
+  }
+
+  /* Final row */
+  .tl-date--final {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--teal);
+  }
+
+  @media (max-width: 600px) {
+    .timeline-line { left: 24px; transform: none; }
+    .tl-dot { left: 24px; transform: translateX(-50%); }
+    .tl-year-label { width: auto; padding-left: 3rem; padding-right: 1rem; text-align: left; }
+    .tl-date { width: auto; padding-left: 3rem; padding-right: 1rem; text-align: left; }
+    .tl-content { width: 100%; padding-left: 3rem; padding-right: 1rem; }
+    .tl-row { flex-direction: column; }
+    .tl-year-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
