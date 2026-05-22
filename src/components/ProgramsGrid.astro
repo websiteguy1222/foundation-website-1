@@ -3,10 +3,6 @@ import RegisterButton from './RegisterButton.astro';
 ---
 <section class="section programs">
   <div class="sec-inner">
-    <div class="label">
-      <span class="label-dot" aria-hidden="true"></span>
-      What we offer
-    </div>
     <h2 class="heading">Skate for All. <em>Inspire for Life.</em></h2>
     <div class="prog-grid">
       <article class="prog-card">
@@ -29,7 +25,7 @@ import RegisterButton from './RegisterButton.astro';
           <li>School District Speedskating Integration Events</li>
           <li>Seminars &amp; Educational Workshops</li>
         </ul>
-        <a href="/programs" class="btn-outline btn-sm">More Information</a>
+        <RegisterButton label="More Information" href="/programs" />
       </article>
 
       <article class="prog-card">
@@ -39,7 +35,7 @@ import RegisterButton from './RegisterButton.astro';
           <li>Let's Skate Coach Mentorship Program</li>
           <li>Let's Skate AI Lab</li>
         </ul>
-        <a href="/programs" class="btn-outline btn-sm">Learn More</a>
+        <RegisterButton label="Learn More" href="/programs" />
       </article>
     </div>
   </div>
@@ -60,7 +56,7 @@ import RegisterButton from './RegisterButton.astro';
     font-size: 0.9rem;
     color: var(--mid);
     line-height: 1.9;
-    margin: 0.75rem 0 1.4rem;
+    margin: 1.4rem 0 1.4rem;
     flex: 1;
   }
 </style>
