@@ -109,10 +109,10 @@ img, video { max-width: 100%; height: auto; display: block; }
 
 /* ── BUTTONS ───────────────────────────────────────────────────────────── */
 .btn-primary {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   background: var(--teal); color: #fff;
   padding: 14px 30px; border-radius: var(--radius-pill);
-  font-size: 0.95rem; font-weight: 800;
+  font-size: 0.95rem; font-weight: 800; text-align: center;
   text-decoration: none; border: none; cursor: pointer;
   box-shadow: 0 4px 14px rgba(0,153,170,0.35);
   transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
@@ -124,9 +124,9 @@ img, video { max-width: 100%; height: auto; display: block; }
 }
 
 .btn-outline {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   padding: 14px 30px; border-radius: var(--radius-pill);
-  font-size: 0.95rem; font-weight: 700;
+  font-size: 0.95rem; font-weight: 700; text-align: center;
   text-decoration: none;
   border: 2px solid var(--border); color: var(--mid);
   background: transparent; cursor: pointer;
@@ -135,9 +135,9 @@ img, video { max-width: 100%; height: auto; display: block; }
 .btn-outline:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-xlt); }
 
 .btn-secondary {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   padding: 14px 30px; border-radius: var(--radius-pill);
-  font-size: 0.95rem; font-weight: 700;
+  font-size: 0.95rem; font-weight: 700; text-align: center;
   text-decoration: none;
   border: 2px solid var(--teal); color: var(--teal);
   background: transparent; cursor: pointer;
@@ -146,10 +146,10 @@ img, video { max-width: 100%; height: auto; display: block; }
 .btn-secondary:hover { background: var(--teal); color: #fff; transform: translateY(-2px); }
 
 .btn-pink {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   background: var(--pink); color: #fff;
   padding: 14px 30px; border-radius: var(--radius-pill);
-  font-size: 0.95rem; font-weight: 800;
+  font-size: 0.95rem; font-weight: 800; text-align: center;
   text-decoration: none; border: none; cursor: pointer;
   box-shadow: 0 4px 14px rgba(255,107,138,0.35);
   transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
@@ -517,7 +517,7 @@ h2.heading em { font-style: italic; color: var(--teal); }
 
 /* ── FOOTER ───────────────────────────────────────────────────────────── */
 .footer {
-  background: var(--dark);
+  background: var(--teal);
   color: rgba(255,255,255,0.6);
   padding: 3rem 2.5rem;
 }
@@ -565,4 +565,9 @@ h2.heading em { font-style: italic; color: var(--teal); }
   .hero { padding: 3rem 1.25rem 0; }
   .band { padding: 1rem 1.25rem; }
   .band-item { padding: 0.25rem 1rem; }
+}
+
+@media (max-width: 720px) {
+  .hero-btns { justify-content: center; }
+  .cta-btns { flex-direction: column; align-items: center; }
 }

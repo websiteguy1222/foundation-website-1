@@ -8,6 +8,9 @@ const values = [
 ];
 ---
 <section class="values-strip">
+  <div class="values-mission">
+    <h2 class="values-mission-title">Our Mission</h2>
+  </div>
   <div class="values-inner">
     {values.map(v => (
       <div class="value-item">
@@ -19,6 +22,25 @@ const values = [
 </section>
 
 <style>
+  .values-mission {
+    text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto 2rem;
+  }
+  .values-mission-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+  }
+  .values-mission-text {
+    font-size: 1rem;
+    color: var(--mid);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
   .values-strip {
     background: var(--white);
     padding: 3rem 2.5rem;
