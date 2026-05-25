@@ -6,8 +6,7 @@ import RegisterButton from './RegisterButton.astro';
     <div class="programs-header">
       <div>
         <div class="label">
-          <span class="label-dot" aria-hidden="true"></span>
-          What we offer
+          <span class="offer-title">What we offer</span>
         </div>
       </div>
     </div>
@@ -56,6 +55,13 @@ import RegisterButton from './RegisterButton.astro';
     margin-bottom: 0;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+  .offer-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
   }
   .programs-tagline {
     font-family: var(--font-serif);

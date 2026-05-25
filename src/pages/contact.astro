@@ -25,6 +25,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdajzpoy';
         action={FORMSPREE_ENDPOINT}
         method="POST"
       >
+        <input type="hidden" name="_next" value="https://letsskate.org/contact" />
         <label>
           <span>Your name</span>
           <input type="text" name="name" required />

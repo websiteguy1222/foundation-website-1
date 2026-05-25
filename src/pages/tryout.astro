@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Formsubmit.co sends submissions to this email and auto-replies to the sender.
+// On first submission you'll receive a one-time activation email — click the
+// link to confirm, then all future submissions will deliver normally.
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/admin@letsskate.org';
+
+// Paste your public Google Calendar embed src here.
+// Google Calendar → Settings → [Your Calendar] → "Integrate calendar" → copy
+// the src URL from the <iframe> embed code shown there.
+const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b1ce3bed5f229ba6d1824a96956964396128036d85e06d5b779c65af6f12%40group.calendar.google.com&ctz=America%2FChicago';
+---
+<BaseLayout
+>
+  <section class="section">
+
+    <!-- Hero -->
+    <div class="sec-inner page-hero">
+      <div class="label" style="justify-content:center">
+        <span class="tryout-title">Free tryout</span>
+      </div>
+      <p class="page-lede">
+        New skaters can try-out a session at no cost.
+        Pick a session below, fill out the form, and we'll see you on the ice
+        at Pettit National Ice Center.
+      </p>
+    </div>
+
+    <!-- What to expect strip -->
+    <div class="sec-inner expect-strip">
+      <div class="expect-item">
+        <strong>Rental skates provided</strong>
+        <span>No need to own gear to try it</span>
+      </div>
+      <div class="expect-item">
+        <strong>Bring a helmet and gloves</strong>
+        <span>Inline, bicycle, or hockey helmet</span>
+      </div>
+      <div class="expect-item">
+        <strong>All skill levels</strong>
+        Zero experience needed
+      </div>
+      <div class="expect-item">
+        <strong>Pettit National Ice Center</strong>
+        <span>Milwaukee, WI</span>
+      </div>
+    </div>
+
+    <!-- Upcoming sessions calendar -->
+    <div class="sec-inner calendar-wrap">
+      <h2 class="section-title">Upcoming sessions</h2>
+      <p class="section-sub">Browse the schedule below and note the date you'd like to attend.</p>
+      <div class="calendar-frame">
+        <iframe
+          src={CALENDAR_EMBED_SRC}
+          title="Elmbrook Speedskating practice schedule"
+          width="100%"
+          height="400"
+          frameborder="0"
+          scrolling="no"
+          style="border:0"
+        ></iframe>
+        <p class="calendar-fallback">
+          Can't see the calendar?
+          <a href="mailto:admin@letsskate.org">Email us</a> for the current schedule.
+        </p>
+      </div>
+    </div>
+
+    <!-- Signup form -->
+    <div class="sec-inner form-wrap">
+      <h2 class="section-title">Reserve your free session</h2>
+      <form
+        class="tryout-form"
+        action={FORMSUBMIT_ENDPOINT}
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="Free Tryout Signup" />
+        <input type="hidden" name="_next" value="https://letsskate.org/tryout" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_autoresponse" value="Thanks for signing up for a free tryout with Elmbrook Speedskating! We'll confirm your session within 1–2 business days. See you on the ice! — Let's Skate Foundation" />
+
+        <div class="form-row">
+          <label>
+            <span>Skater's name <em class="req">*</em></span>
+            <input type="text" name="skater_name" required />
+          </label>
+          <label>
+            <span>Skater's age <em class="req">*</em></span>
+            <input type="number" name="skater_age" min="4" max="18" required />
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>
+            <span>Parent / guardian name <em class="req">*</em></span>
+            <input type="text" name="parent_name" required />
+          </label>
+          <label>
+            <span>Parent / guardian email <em class="req">*</em></span>
+            <input type="email" name="email" required />
+          </label>
+        </div>
+
+        <label>
+          <span>Phone (optional)</span>
+          <input type="tel" name="phone" />
+        </label>
+
+        <label>
+          <span>Preferred session date <em class="req">*</em></span>
+          <input type="date" name="session_date" required />
+        </label>
+
+        <label>
+          <span>Prior skating experience <em class="req">*</em></span>
+          <select name="experience" required>
+            <option value="" disabled selected>Select one…</option>
+            <option>None — first time on ice</option>
+            <option>Recreational / figure skating</option>
+            <option>Inline / roller skating</option>
+            <option>Hockey</option>
+            <option>Speed skating</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <label>
+          <span>How did you hear about us?</span>
+          <select name="referral">
+            <option value="" disabled selected>Select one…</option>
+            <option>School newsletter / flyer</option>
+            <option>Friend or family</option>
+            <option>Social media</option>
+            <option>News article</option>
+            <option>Search engine</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Anything we should know?</span>
+          <textarea name="notes" rows="3" placeholder="Allergies, accessibility needs, questions…"></textarea>
+        </label>
+
+        <button type="submit" class="btn-primary">Reserve my free session</button>
+        <p class="form-hint">We'll confirm your spot by email within 1 to 2 business days.</p>
+      </form>
+    </div>
+
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .page-hero { text-align: center; }
+  .tryout-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+  }
+  .page-hero h1.heading { font-size: clamp(2.2rem, 4vw, 3rem); }
+  .page-lede { max-width: 600px; margin: 1rem auto 0; font-size: 1rem; color: var(--mid); }
+
+  /* Expect strip */
+  .expect-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .expect-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--off);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1rem;
+    font-size: 0.85rem;
+    color: var(--mid);
+  }
+  .expect-icon { font-size: 1.5rem; margin-bottom: 4px; }
+  .expect-item strong { color: var(--dark); font-size: 0.88rem; }
+
+  /* Calendar */
+  .calendar-wrap { margin-top: 3rem; }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.4rem;
+  }
+  .section-sub { font-size: 0.9rem; color: var(--mid); margin-bottom: 1.25rem; }
+  .calendar-frame {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--white);
+  }
+  .calendar-fallback {
+    font-size: 0.8rem;
+    color: var(--mid);
+    text-align: center;
+    padding: 0.5rem 1rem 0.75rem;
+  }
+  .calendar-fallback a { color: var(--teal); font-weight: 700; }
+
+  /* Form */
+  .form-wrap { margin-top: 3rem; max-width: 640px; }
+  .tryout-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .tryout-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--mid);
+    gap: 6px;
+  }
+  .req { font-style: normal; color: var(--pink-dk); }
+  .tryout-form input,
+  .tryout-form select,
+  .tryout-form textarea {
+    font: inherit;
+    font-size: 0.95rem;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    color: var(--dark);
+  }
+  .tryout-form input:focus,
+  .tryout-form select:focus,
+  .tryout-form textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(45,152,147,0.15);
+  }
+  .form-hint { font-size: 0.78rem; color: var(--mid); font-weight: 500; }
+
+  @media (max-width: 880px) {
+    .expect-strip { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .expect-strip { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
