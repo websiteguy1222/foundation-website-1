@@ -37,9 +37,9 @@
   --radius-xl: 36px;
   --radius-pill: 50px;
 
-  /* Typography stacks (Nunito + Fraunces loaded in layout head) */
+  /* Typography stacks (Nunito + Playfair Display loaded in layout head) */
   --font-sans: 'Nunito', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Fraunces', Georgia, serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
 }
 
 html { scroll-behavior: smooth; }
