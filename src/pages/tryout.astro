@@ -1,10 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Formsubmit.co sends submissions to this email and auto-replies to the sender.
-// On first submission you'll receive a one-time activation email — click the
-// link to confirm, then all future submissions will deliver normally.
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/admin@letsskate.org';
+const FORMSUBMIT_ENDPOINT = 'https://api.web3forms.com/submit';
 
 // Paste your public Google Calendar embed src here.
 // Google Calendar → Settings → [Your Calendar] → "Integrate calendar" → copy
@@ -83,10 +80,11 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
         action={FORMSUBMIT_ENDPOINT}
         method="POST"
       >
-        <input type="hidden" name="_subject" value="Free Tryout Signup" />
-        <input type="hidden" name="_next" value={new URL('/tryout/thanks', Astro.url).href} />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_autoresponse" value="Hi! Thanks for signing up for a free tryout with Elmbrook Speedskating at Pettit National Ice Center. We received your request and will confirm your session within 1–2 business days. What to bring: helmet (inline, bicycle, or hockey), gloves, and knee/elbow pads are strongly recommended. Rental skates will be ready if you requested them. Questions? Reply to this email or reach us at admin@letsskate.org. See you on the ice! — Let's Skate Foundation" />
+        <input type="hidden" name="access_key" value="9e620bc6-b7f5-4259-bc97-94dd95a9e772" />
+        <input type="hidden" name="subject" value="Free Tryout Signup" />
+        <input type="hidden" name="from_name" value="Let's Skate Foundation" />
+        <input type="hidden" name="redirect" value={new URL('/tryout/thanks', Astro.url).href} />
+        <input type="hidden" name="botcheck" value="" />
 
         <div class="form-row">
           <label>
@@ -397,29 +395,31 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const radios        = document.querySelectorAll<HTMLInputElement>('input[name="rental_skates"]');
-    const sizeWrap      = document.getElementById('skate-size-wrap') as HTMLElement;
-    const footInput     = document.getElementById('foot-length') as HTMLInputElement;
-    const waiverCheck   = document.querySelector<HTMLInputElement>('input[name="waiver_agreed"]')!;
-    const submitBtn     = document.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+  import emailjs from '@emailjs/browser';
 
-    let isVisible       = true;
-    let waiverAgreed    = false;
+  document.addEventListener('DOMContentLoaded', () => {
+    emailjs.init('Drtvoj3fV4Y33Kdzs');
+
+    const form         = document.querySelector<HTMLFormElement>('.tryout-form')!;
+    const radios       = document.querySelectorAll<HTMLInputElement>('input[name="rental_skates"]');
+    const sizeWrap     = document.getElementById('skate-size-wrap') as HTMLElement;
+    const footInput    = document.getElementById('foot-length') as HTMLInputElement;
+    const waiverCheck  = document.querySelector<HTMLInputElement>('input[name="waiver_agreed"]')!;
+    const submitBtn    = document.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+
+    const checkedRadio = Array.from(radios).find(r => r.checked);
+    let isVisible    = checkedRadio?.value !== 'No';
+    let waiverAgreed = waiverCheck.checked;
 
     function applyState() {
-      // rental skates section
       sizeWrap.hidden    = !isVisible;
       footInput.required =  isVisible;
       if (!isVisible) footInput.value = '';
-
-      // submit button locked until waiver is checked
       submitBtn.disabled = !waiverAgreed;
     }
 
-    // initialise — button starts disabled
     applyState();
-    console.log(isVisible);
+
     radios.forEach(radio => {
       radio.addEventListener('change', () => {
         isVisible = radio.value === 'Yes';
@@ -430,6 +430,32 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
     waiverCheck.addEventListener('change', () => {
       waiverAgreed = waiverCheck.checked;
       applyState();
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!waiverAgreed) {
+        submitBtn.disabled = true;
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      const email        = (form.querySelector<HTMLInputElement>('input[name="email"]'))!.value;
+      const parentName   = (form.querySelector<HTMLInputElement>('input[name="parent_name"]'))!.value;
+      const sessionDate  = (form.querySelector<HTMLInputElement>('input[name="session_date"]'))!.value;
+
+      try {
+        await emailjs.send('service_j9kv9xv', 'template_25hvcn9', {
+          to_email:     email,
+          name:         parentName,
+          session_date: sessionDate,
+        });
+      } catch (err) {
+        console.error('EmailJS error:', err);
+      }
+
+      form.submit();
     });
   });
 </script>
