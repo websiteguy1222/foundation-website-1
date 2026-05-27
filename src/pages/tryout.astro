@@ -11,6 +11,7 @@ const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/admin@letsskate.org';
 // the src URL from the <iframe> embed code shown there.
 const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b1ce3bed5f229ba6d1824a96956964396128036d85e06d5b779c65af6f12%40group.calendar.google.com&ctz=America%2FChicago';
 ---
+
 <BaseLayout
 >
   <section class="section">
@@ -165,7 +166,7 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
           <legend>Do you need rental skates? <em class="req">*</em></legend>
           <div class="radio-group">
             <label class="radio-label">
-              <input type="radio" name="rental_skates" value="Yes" required /> Yes
+              <input type="radio" name="rental_skates" value="Yes" required checked /> Yes
             </label>
             <label class="radio-label">
               <input type="radio" name="rental_skates" value="No" required /> No
@@ -346,7 +347,9 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
   }
   .radio-label input { width: auto; padding: 0; }
   .skate-size-wrap { display: flex; flex-direction: column; gap: 0.4rem; }
-
+  [hidden] {
+    display: none !important;
+  }
   /* Waiver */
   .waiver-box {
     background: var(--off);
@@ -380,6 +383,11 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
   }
   .waiver-check input { width: auto; padding: 0; }
 
+  .btn-primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
   @media (max-width: 880px) {
     .expect-strip { grid-template-columns: 1fr 1fr; }
   }
@@ -391,17 +399,38 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const radios = document.querySelectorAll<HTMLInputElement>('input[name="rental_skates"]');
-    const sizeWrap = document.getElementById('skate-size-wrap') as HTMLElement;
-    const footInput = document.getElementById('foot-length') as HTMLInputElement;
+    const radios        = document.querySelectorAll<HTMLInputElement>('input[name="rental_skates"]');
+    const sizeWrap      = document.getElementById('skate-size-wrap') as HTMLElement;
+    const footInput     = document.getElementById('foot-length') as HTMLInputElement;
+    const waiverCheck   = document.querySelector<HTMLInputElement>('input[name="waiver_agreed"]')!;
+    const submitBtn     = document.querySelector<HTMLButtonElement>('button[type="submit"]')!;
 
+    let isVisible       = true;
+    let waiverAgreed    = false;
+
+    function applyState() {
+      // rental skates section
+      sizeWrap.hidden    = !isVisible;
+      footInput.required =  isVisible;
+      if (!isVisible) footInput.value = '';
+
+      // submit button locked until waiver is checked
+      submitBtn.disabled = !waiverAgreed;
+    }
+
+    // initialise — button starts disabled
+    applyState();
+    console.log(isVisible);
     radios.forEach(radio => {
       radio.addEventListener('change', () => {
-        const needsRental = radio.value === 'Yes' && radio.checked;
-        sizeWrap.hidden = !needsRental;
-        footInput.required = needsRental;
-        if (!needsRental) footInput.value = '';
+        isVisible = radio.value === 'Yes';
+        applyState();
       });
+    });
+
+    waiverCheck.addEventListener('change', () => {
+      waiverAgreed = waiverCheck.checked;
+      applyState();
     });
   });
 </script>

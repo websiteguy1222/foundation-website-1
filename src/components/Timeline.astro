@@ -55,7 +55,7 @@ const years = [
     events: [
       { date: "July 2021 - March 2022", caption: "Elmbrook Speedskating Club participated in two regional speedskating competitions." },
       { date: "May 2021", image: "/Elmbrook Speedskating Club Bonnie Blair Guest Appearance.jpg", alt: "Bonnie Blair Guest Appearance", caption: "Welcomed five-time Olympic medalist Bonnie Blair as a guest speaker, who presented the Dedication to Sport Award to team members." },
-      { date: "April 2021", image: "", alt: "", caption: "Held the first official speedskating training session of the Elmbrook Speedskating Club." },
+      { date: "April 2021", caption: "Held the first official speedskating training session of the Elmbrook Speedskating Club." },
       { date: "March 2021", caption: "Hosted the first informational recruitment session at Brookfield Central High School." },
     ],
   },
@@ -68,168 +68,215 @@ const years = [
 ];
 ---
 
-<div class="timeline-wrap">
-  <div class="timeline-line"></div>
+<div class="tl-wrap">
+  <div class="tl-line"></div>
 
   {years.map(({ year, events }) => (
-    <details class="tl-year">
-      <summary class="tl-year-header">
-        <span class="tl-year-label">
+    <details class="tl-year" open>
+      <summary class="tl-year-banner">
+        <div class="tl-year-badge">
           <span class="tl-arrow" aria-hidden="true">▶</span>
           {year}
-        </span>
-        <span class="tl-dot" aria-hidden="true" style="top:50%"></span>
+        </div>
       </summary>
+
       <div class="tl-events">
-        {events.map(({ date, image, alt, caption }) => (
-          <figure class="tl-row">
-            <div class="tl-date">{date}</div>
-            <span class="tl-dot" aria-hidden="true" style="top:1.6rem"></span>
-            <div class="tl-content">
-              {image && <img src={image} alt={alt} class="tl-img" loading="lazy" />}
-              <figcaption class="tl-caption">{caption}</figcaption>
-            </div>
+        {events.map(({ date, image, alt, caption }, i) => (
+          <figure class={`tl-row ${i % 2 === 0 ? 'tl-left' : 'tl-right'}`}>
+
+            {image ? (
+              <div class="tl-card tl-card-img">
+                <img src={image} alt={alt} class="tl-img" loading="lazy" />
+                <div class="tl-text">
+                  <div class="tl-date">{date}</div>
+                  <figcaption class="tl-caption">{caption}</figcaption>
+                </div>
+              </div>
+            ) : (
+              <div class="tl-card">
+                <div class="tl-date">{date}</div>
+                <figcaption class="tl-caption">{caption}</figcaption>
+              </div>
+            )}
+
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-spacer" aria-hidden="true"></div>
           </figure>
         ))}
       </div>
     </details>
   ))}
-
 </div>
 
 <style>
-  .timeline-wrap {
+  .tl-wrap {
     position: relative;
     max-width: 900px;
     margin: 2rem auto 0;
-    background: var(--white);
-    border-radius: var(--radius-lg);
-    padding: 2rem 0 2rem;
   }
 
   /* Vertical line */
-  .timeline-line {
+  .tl-line {
     position: absolute;
     top: 0; bottom: 0;
-    left: 33%;
+    left: 50%;
     transform: translateX(-50%);
     width: 3px;
     background: var(--teal);
     z-index: 0;
   }
 
-  /* Dot — top is set via inline style on each element */
-  .tl-dot {
-    position: absolute;
-    left: 33%;
-    transform: translate(-50%, -50%);
-    width: 14px;
-    height: 14px;
-    background: var(--teal);
-    border-radius: 50%;
-    z-index: 1;
-  }
+  /* Year section */
+  .tl-year { position: relative; }
 
-  /* ── Year header (summary) ── */
-  .tl-year {
-    position: relative;
-  }
-  .tl-year-header {
+  .tl-year-banner {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
-    padding: 1rem 0;
+    z-index: 2;
+    padding: 1.5rem 0 0.5rem;
     cursor: pointer;
     list-style: none;
   }
-  .tl-year-header::-webkit-details-marker { display: none; }
+  .tl-year-banner::-webkit-details-marker { display: none; }
 
-  .tl-year-label {
-    width: 33%;
-    text-align: right;
-    padding-right: 2rem;
+  .tl-year-badge {
+    background: var(--teal);
+    color: var(--white);
     font-family: var(--font-serif);
-    font-size: 1.6rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--dark);
+    padding: 0.3rem 1.4rem;
+    border-radius: 20px;
     display: flex;
     align-items: baseline;
-    justify-content: flex-end;
     gap: 0.5rem;
+    box-shadow: 0 2px 10px rgba(45, 152, 147, 0.3);
   }
 
   .tl-arrow {
+    font-size: 0.75rem;
     display: inline-block;
     transition: transform 0.2s;
-    color: var(--teal);
-    font-size: 1rem;
   }
   details[open] .tl-arrow {
     transform: rotate(90deg);
   }
 
-  /* ── Event rows ── */
+  /* Event rows */
   .tl-row {
     display: flex;
     align-items: flex-start;
     position: relative;
-    padding: 1.2rem 0;
+    padding: 0.5rem 0;
+  }
+  .tl-left  { flex-direction: row; }
+  .tl-right { flex-direction: row-reverse; }
+
+  /* Card */
+  .tl-card {
+    width: calc(50% - 24px);
+    padding: 0.9rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.06);
+    position: relative;
+  }
+  .tl-left  .tl-card { margin-right: 24px; }
+  .tl-right .tl-card { margin-left: 24px; }
+
+  /* Connector line from card edge to dot */
+  .tl-left .tl-card::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 2px;
+    background: var(--border);
+  }
+  .tl-right .tl-card::after {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 2px;
+    background: var(--border);
+  }
+
+  /* Image card variant */
+  .tl-card-img {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+  }
+  .tl-card-img .tl-img {
+    width: 44%;
+    flex-shrink: 0;
+    object-fit: cover;
+    align-self: stretch;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+  }
+  .tl-text {
+    flex: 1;
+    padding: 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .tl-date {
-    width: 33%;
-    text-align: right;
-    padding-right: 2rem;
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--dark);
-    padding-top: 0.2rem;
-  }
-
-  .tl-content {
-    width: 67%;
-    padding-left: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  @media (min-width: 640px) {
-    .tl-content {
-      flex-direction: row;
-      align-items: flex-start;
-    }
-  }
-
-  .tl-img {
-    width: 100%;
-    max-width: 260px;
-    border-radius: var(--radius-sm);
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .tl-caption {
-    font-size: 0.95rem;
-    color: var(--mid);
-    line-height: 1.6;
-    padding-top: 0.2rem;
-  }
-
-  /* Final row */
-  .tl-date--final {
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
+    font-size: 0.78rem;
+    font-weight: 800;
     color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.35rem;
+  }
+  .tl-caption {
+    font-size: 0.88rem;
+    color: var(--mid);
+    line-height: 1.65;
   }
 
-  @media (max-width: 600px) {
-    .timeline-line { left: 24px; transform: none; }
-    .tl-dot { left: 24px; transform: translateX(-50%); }
-    .tl-year-label { width: auto; padding-left: 3rem; padding-right: 1rem; text-align: left; }
-    .tl-date { width: auto; padding-left: 3rem; padding-right: 1rem; text-align: left; }
-    .tl-content { width: 100%; padding-left: 3rem; padding-right: 1rem; }
-    .tl-row { flex-direction: column; }
-    .tl-year-header { flex-direction: column; align-items: flex-start; }
+  /* Dot on the center line */
+  .tl-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--teal);
+    z-index: 2;
+  }
+
+  /* Empty spacer fills the opposite half */
+  .tl-spacer { width: calc(50% + 24px); }
+
+  /* Mobile — single column, line on left */
+  @media (max-width: 620px) {
+    .tl-line { left: 20px; transform: none; }
+
+    .tl-year-banner { justify-content: flex-start; padding-left: 3rem; }
+    .tl-year-badge  { font-size: 1.05rem; }
+
+    .tl-row { flex-direction: column !important; padding-left: 3rem; }
+    .tl-spacer { display: none; }
+    .tl-card  { width: 100%; margin: 0 !important; }
+    .tl-card::after { display: none; }
+
+    .tl-dot { left: 20px; top: 1.4rem; }
+
+    .tl-card-img { flex-direction: column; }
+    .tl-card-img .tl-img { width: 100%; height: 160px; align-self: auto; }
   }
 </style>
