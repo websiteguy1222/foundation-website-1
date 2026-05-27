@@ -51,14 +51,20 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
     <div class="sec-inner calendar-wrap">
       <h2 class="section-title">Upcoming sessions</h2>
       <p class="section-sub">Browse the schedule below and note the date you'd like to attend.</p>
+      <div class="notice-box">
+        <strong>Please note</strong>
+        <ul>
+          <li>Available only to first-time participants (no prior registration within the past two years).</li>
+          <li>Registration must be completed at least one day in advance.</li>
+          <li>Walk-ins are not accepted — staff need time to prepare equipment and coaching resources.</li>
+        </ul>
+      </div>
       <div class="calendar-frame">
         <iframe
           src={CALENDAR_EMBED_SRC}
           title="Elmbrook Speedskating practice schedule"
           width="100%"
           height="400"
-          frameborder="0"
-          scrolling="no"
           style="border:0"
         ></iframe>
         <p class="calendar-fallback">
@@ -126,6 +132,17 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
           </select>
         </label>
 
+        <div class="form-row">
+          <label>
+            <span>School district</span>
+            <input type="text" name="school_district" placeholder="e.g. Elmbrook School District" />
+          </label>
+          <label>
+            <span>School name</span>
+            <input type="text" name="school_name" placeholder="e.g. Brookfield Central High School" />
+          </label>
+        </div>
+
         <label>
           <span>How did you hear about us?</span>
           <select name="referral">
@@ -143,6 +160,43 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
           <span>Anything we should know?</span>
           <textarea name="notes" rows="3" placeholder="Allergies, accessibility needs, questions…"></textarea>
         </label>
+
+        <fieldset class="rental-fieldset">
+          <legend>Do you need rental skates? <em class="req">*</em></legend>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="rental_skates" value="Yes" required /> Yes
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="rental_skates" value="No" required /> No
+            </label>
+          </div>
+        </fieldset>
+
+        <div id="skate-size-wrap" class="skate-size-wrap" hidden>
+          <label>
+            <span>Foot length (heel to toe, in inches) <em class="req">*</em></span>
+            <input type="text" name="foot_length_inches" id="foot-length" placeholder='e.g. 9.5"' />
+          </label>
+          <p class="form-hint">Measure while standing barefoot on a hard floor.</p>
+        </div>
+
+        <div class="waiver-box">
+          <h3 class="waiver-title">Waiver &amp; Release</h3>
+          <div class="waiver-text">
+            <iframe
+              src="/waiver-release.pdf#toolbar=0&navpanes=0&scrollbar=0"
+              title="Let's Skate Foundation Waiver & Release"
+              width="100%"
+              height="300"
+              style="border:0"
+            ></iframe>
+          </div>
+          <label class="waiver-check">
+            <input type="checkbox" name="waiver_agreed" value="Yes" required />
+            <span>Yes, I agree to the Waiver &amp; Release above <em class="req">*</em></span>
+          </label>
+        </div>
 
         <button type="submit" class="btn-primary">Reserve my free session</button>
         <p class="form-hint">We'll confirm your spot by email within 1 to 2 business days.</p>
@@ -185,6 +239,29 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
   }
   .expect-icon { font-size: 1.5rem; margin-bottom: 4px; }
   .expect-item strong { color: var(--dark); font-size: 0.88rem; }
+
+  /* Notice box */
+  .notice-box {
+    background: var(--pink-xlt);
+    border: 1px solid var(--pink);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.88rem;
+    color: var(--dark);
+  }
+  .notice-box strong {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--pink-dk);
+  }
+  .notice-box ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    line-height: 1.8;
+    color: var(--mid);
+  }
 
   /* Calendar */
   .calendar-wrap { margin-top: 3rem; }
@@ -244,6 +321,65 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
   }
   .form-hint { font-size: 0.78rem; color: var(--mid); font-weight: 500; }
 
+  /* Rental skates */
+  .rental-fieldset {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1rem;
+  }
+  .rental-fieldset legend {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--mid);
+    padding: 0 0.25rem;
+  }
+  .radio-group { display: flex; gap: 1.5rem; margin-top: 0.4rem; }
+  .radio-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+  }
+  .radio-label input { width: auto; padding: 0; }
+  .skate-size-wrap { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  /* Waiver */
+  .waiver-box {
+    background: var(--off);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+  .waiver-title {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+  }
+  .waiver-text {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--white);
+    margin-bottom: 0.75rem;
+  }
+  .waiver-check {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+  }
+  .waiver-check input { width: auto; padding: 0; }
+
   @media (max-width: 880px) {
     .expect-strip { grid-template-columns: 1fr 1fr; }
   }
@@ -252,3 +388,20 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
     .form-row { grid-template-columns: 1fr; }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const radios = document.querySelectorAll<HTMLInputElement>('input[name="rental_skates"]');
+    const sizeWrap = document.getElementById('skate-size-wrap') as HTMLElement;
+    const footInput = document.getElementById('foot-length') as HTMLInputElement;
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const needsRental = radio.value === 'Yes' && radio.checked;
+        sizeWrap.hidden = !needsRental;
+        footInput.required = needsRental;
+        if (!needsRental) footInput.value = '';
+      });
+    });
+  });
+</script>
