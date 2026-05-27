@@ -84,9 +84,9 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
         method="POST"
       >
         <input type="hidden" name="_subject" value="Free Tryout Signup" />
-        <input type="hidden" name="_next" value="https://letsskate.org/tryout" />
+        <input type="hidden" name="_next" value={new URL('/tryout/thanks', Astro.url).href} />
         <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_autoresponse" value="Thanks for signing up for a free tryout with Elmbrook Speedskating! We'll confirm your session within 1–2 business days. See you on the ice! — Let's Skate Foundation" />
+        <input type="hidden" name="_autoresponse" value="Hi! Thanks for signing up for a free tryout with Elmbrook Speedskating at Pettit National Ice Center. We received your request and will confirm your session within 1–2 business days. What to bring: helmet (inline, bicycle, or hockey), gloves, and knee/elbow pads are strongly recommended. Rental skates will be ready if you requested them. Questions? Reply to this email or reach us at admin@letsskate.org. See you on the ice! — Let's Skate Foundation" />
 
         <div class="form-row">
           <label>
@@ -189,8 +189,7 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
               src="/waiver-release.pdf#toolbar=0&navpanes=0&scrollbar=0"
               title="Let's Skate Foundation Waiver & Release"
               width="100%"
-              height="300"
-              style="border:0"
+              style="border:0;display:block;height:clamp(180px,45vh,520px)"
             ></iframe>
           </div>
           <label class="waiver-check">
