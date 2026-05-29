@@ -1,53 +1,151 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Placeholder gallery — replace src URLs with real photos from Cloudinary
-// or your hosting once you have them. Keep alt text descriptive.
-const placeholders = Array.from({ length: 9 }, (_, i) => ({
-  alt: `Skating photo placeholder ${i + 1}`,
-}));
+const sections = [
+  {
+    title: "Let's Skate Day",
+    photos: [
+      { src: "/DSCF6750.jpg", alt: "Let's Skate Day" },
+      { src: "/DSCF6862.jpg", alt: "Let's Skate Day" },
+      { src: "/DSCF7163.jpg", alt: "Let's Skate Day" },
+      { src: "/4C3B0B06-9425-49C2-921D-5BF6CD7549B1.JPG", alt: "Let's Skate Day"},
+      { src: "/81D837F8-2BED-4B9F-AC78-63BFFA250C92.JPG", alt: "Let's Skate Day" }, 
+      { src : "/204A6047-FB9E-43DC-9B4B-1AEED7E0C8DB.JPG", alt: "Let's Skate Day" }, 
+      { src: "/20260411_183449_5B08CB.JPEG", alt: "Let's Skate Day" },
+      { src: "/20260411_183449_5C4633.JPEG", alt: "Let's Skate Day" },
+      { src: "/20260411_183449_5E0F63.JPEG", alt: "Let's Skate Day" },
+      { src: "/20260411_183846_5E1D70.JPEG", alt: "Let's Skate Day"},
+      { src: "/20260411_183846_5460C2.JPEG", alt: "Let's Skate Day" }, 
+      { src : "/20260411_183846_569996.JPEG", alt: "Let's Skate Day" }, 
+      { src: "/20260411_184010_5E4A23.JPEG", alt: "Let's Skate Day" },
+      { src: "/20260411_184010_5FDF83.JPEG", alt: "Let's Skate Day"},
+      { src: "/20260411_184010_55A0DC.JPEG", alt: "Let's Skate Day" }, 
+      { src : "/20260411_184102_539D21.JPEG", alt: "Let's Skate Day" }, 
+    ],
+    numRows: 4,
+  },
+  {
+    title: '2026 Tour of Olympians',
+    photos: [
+      { src: "/IMG_7804 2.JPG", alt: "2026 Tour of Olympians" },
+      { src: "/IMG_7805.JPG", alt: "2026 Tour of Olympians" },
+      { src: "/IMG_7825.JPG", alt: "2026 Tour of Olympians" },
+      { src: "/IMG_7828.JPG", alt: "2026 Tour of Olympians" },
+      { src: "/IMG_7829.JPG", alt: "2026 Tour of Olympians" },
+      { src: "/IMG_7830.JPG", alt: "2026 Tour of Olympians" },
+      { src: "/IMG_7835.JPG", alt: "2026 Tour of Olympians" },
+      { src: "/IMG_7836 2.JPG", alt: "2026 Tour of Olympians" },
+    ], 
+    numRows: 4,
+  },
+  {
+    title: 'Annual Interscholastic Challenge',
+    photos: [
+    { src: "/pinnacle-0010_54634928842_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-0341_54638081961_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-0802_54634930957_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-0836_54637215867_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-0974_54636098945_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1020_54638297329_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1094_54634930462_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-7300_54638319153_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-7348_54638074466_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-7567_54638318218_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-7947_54636002009_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-9836_54636001379_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1190_54634930222_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1235_54636003579_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1249_54634929977_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1265_54635789951_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1280_54636028248_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1327_54636025938_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1362_54636003404_o.jpg", alt: "2025 Interscholastic Challenge" },
+    { src: "/pinnacle-1411_54636001744_o.jpg", alt: "2025 Interscholastic Challenge" },
+    ],
+  },
+  {
+    title: 'Burleigh High Interest Day',
+    photos: [
+      // Add photos: { src: '/your-photo.jpg', alt: 'Description' }
+    ],
+  },
+  {
+    title: 'Speedskating in PE Class',
+    photos: [
+      // Add photos: { src: '/your-photo.jpg', alt: 'Description' }
+    ],
+  },
+  {
+    title: 'Annual Summer Camps',
+    photos: [
+      // Add photos: { src: '/your-photo.jpg', alt: 'Description' }
+    ],
+  },
+];
 ---
-<BaseLayout title="Gallery" description="Photos and video from Elmbrook Speedskating practices, meets, and summer camp.">
+<BaseLayout title="Gallery" description="Photos from Let's Skate Foundation events including Let's Skate Day, Tour of Olympians, summer camps, and more.">
   <section class="section">
     <div class="sec-inner page-hero">
       <h1 class="heading">Gallery</h1>
       <p class="body-text page-lede">
-        Photos and video from practices, meets, and summer camp.
+        Photos from our events, programs, and community moments.
       </p>
     </div>
 
-    <div class="sec-inner">
-      <div class="gallery-grid">
-        {placeholders.map((p) => (
-          <div class="gallery-tile" role="img" aria-label={p.alt}>
-            <span aria-hidden="true">⛸</span>
-          </div>
-        ))}
+    {sections.map((section) => (
+      <div class="sec-inner event-section">
+        <h2 class="event-title">{section.title}</h2>
+        <div class="gallery-grid" style={{ gridTemplateColumns: `repeat(${section.numRows || 4}, 1fr)` }}>
+          {section.photos.map((photo) =>
+            photo.src
+              ? <img src={photo.src} alt={photo.alt} class="gallery-tile" loading="lazy" />
+              : <div class="gallery-tile gallery-placeholder" role="img" aria-label={photo.alt}><span aria-hidden="true">⛸</span></div>
+          )}
+        </div>
       </div>
-    </div>
+    ))}
   </section>
 </BaseLayout>
 
 <style>
   .page-hero { text-align: center; }
-  .page-hero .label { justify-content: center; }
   .page-hero h1.heading { font-size: clamp(2.2rem, 4vw, 3rem); }
   .page-lede { max-width: 640px; margin: 1rem auto 0; font-size: 1rem; }
 
+  .event-section { margin-top: 3.5rem; }
+  .event-section:first-of-type { margin-top: 2rem; }
+
+  .event-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+  }
+
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 0.75rem;
   }
+
   .gallery-tile {
     aspect-ratio: 4 / 3;
+    width: 100%;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+  }
+
+  .gallery-placeholder {
     background: var(--teal-lt);
-    border-radius: var(--radius-lg);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
     color: var(--teal);
   }
+
   @media (max-width: 720px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
 </style>

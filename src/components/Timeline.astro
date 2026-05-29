@@ -25,11 +25,11 @@ const years = [
     year: "2024",
     events: [
       { date: "September - December 2024", caption: "Elmbrook Speedskating Club participated in three regional speedskating competitions." },
-      { date: "August 2024", image: "/Elmbrook Speedskating Club 2024 Summer.jpeg", alt: "Elmbrook 2024 Summer Camp", caption: "Hosted annual Elmbrook Speedskating Summer Camp." },
+      { date: "August 2024", caption: "Hosted annual Elmbrook Speedskating Summer Camp." },
       { date: "July 2024", caption: "Let's Skate Foundation was officially founded, built upon the successful operational model of the school speedskating club to expand its reach and influence nationwide. The foundation manages Elmbrook Speedskating Club as its core training program." },
       { date: "July 2024", caption: "Let's Skate Foundation launched the Coach Mentorship Program. The initiative aims to expand the national youth speedskating coaching talent pool and provide valuable community service opportunities for emerging volunteer coaches." },
       { date: "April - July 2024", caption: "Provided consistent spring and summer speedskating training for the local community." },
-      { date: "April 2024", image: "/Elmbrook Speedskating Club 2024 China Trip.jpg", alt: "Elmbrook Alumni in China", caption: "Elmbrook alumni participated in the Sino-US Speedskating Invitational Tournament in Tangshan, China." },
+      { date: "April 2024", caption: "Elmbrook alumni participated in the Sino-US Speedskating Invitational Tournament in Tangshan, China." },
       { date: "March 2024", caption: "Multiple Elmbrook alumni competed at the 2024 US Short Track Speedskating Age Group National Championships." },
       { date: "February 2024", caption: "Elmbrook speed skaters made their debut at the 2024 US Long Track Speedskating Age Group National Championships." },
     ],
@@ -54,7 +54,7 @@ const years = [
     year: "2021",
     events: [
       { date: "July 2021 - March 2022", caption: "Elmbrook Speedskating Club participated in two regional speedskating competitions." },
-      { date: "May 2021", image: "/Elmbrook Speedskating Club Bonnie Blair Guest Appearance.jpg", alt: "Bonnie Blair Guest Appearance", caption: "Welcomed five-time Olympic medalist Bonnie Blair as a guest speaker, who presented the Dedication to Sport Award to team members." },
+      { date: "May 2021", caption: "Welcomed five-time Olympic medalist Bonnie Blair as a guest speaker, who presented the Dedication to Sport Award to team members." },
       { date: "April 2021", caption: "Held the first official speedskating training session of the Elmbrook Speedskating Club." },
       { date: "March 2021", caption: "Hosted the first informational recruitment session at Brookfield Central High School." },
     ],
@@ -62,7 +62,7 @@ const years = [
   {
     year: "2020",
     events: [
-      { date: "August 2020", image: "/Elmbrook Speedskating Club First Meeting.jpg", alt: "First Meeting", caption: "Elmbrook Speedskating Club was founded during the COVID-19 pandemic, recognized as the nation's only school-district-based speedskating club." },
+      { date: "August 2020", caption: "Elmbrook Speedskating Club was founded during the COVID-19 pandemic, recognized as the nation's only school-district-based speedskating club." },
     ],
   },
 ];
@@ -81,23 +81,15 @@ const years = [
       </summary>
 
       <div class="tl-events">
-        {events.map(({ date, image, alt, caption }, i) => (
+        {events.map(({ date, /*image, alt,*/ caption }, i) => (
           <figure class={`tl-row ${i % 2 === 0 ? 'tl-left' : 'tl-right'}`}>
 
-            {image ? (
-              <div class="tl-card tl-card-img">
-                <img src={image} alt={alt} class="tl-img" loading="lazy" />
-                <div class="tl-text">
-                  <div class="tl-date">{date}</div>
-                  <figcaption class="tl-caption">{caption}</figcaption>
-                </div>
-              </div>
-            ) : (
+            
               <div class="tl-card">
                 <div class="tl-date">{date}</div>
                 <figcaption class="tl-caption">{caption}</figcaption>
               </div>
-            )}
+            
 
             <span class="tl-dot" aria-hidden="true"></span>
             <div class="tl-spacer" aria-hidden="true"></div>

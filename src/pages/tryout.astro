@@ -444,6 +444,7 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
       const email        = (form.querySelector<HTMLInputElement>('input[name="email"]'))!.value;
       const parentName   = (form.querySelector<HTMLInputElement>('input[name="parent_name"]'))!.value;
       const sessionDate  = (form.querySelector<HTMLInputElement>('input[name="session_date"]'))!.value;
+      const time = (form.querySelector<HTMLInputElement>('input[name="session_date"]'))!.valueAsDate;
 
       try {
         await emailjs.send('service_j9kv9xv', 'template_25hvcn9', {
@@ -456,6 +457,17 @@ const CALENDAR_EMBED_SRC = 'https://calendar.google.com/calendar/embed?src=b953b
       }
 
       form.submit();
+    });
+
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) {
+        form.reset();
+        const checkedRadio = Array.from(radios).find(r => r.checked);
+        isVisible    = checkedRadio?.value !== 'No';
+        waiverAgreed = waiverCheck.checked;
+        submitBtn.textContent = 'Reserve my free session';
+        applyState();
+      }
     });
   });
 </script>
