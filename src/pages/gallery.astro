@@ -131,14 +131,57 @@ const sections = [
         <div class="gallery-grid" style={{ gridTemplateColumns: `repeat(${section.numRows || 4}, 1fr)` }}>
           {section.photos.map((photo) =>
             photo.src
-              ? <img src={photo.src} alt={photo.alt} class="gallery-tile" loading="lazy" />
+              ? <button type="button" class="gallery-tile-btn" data-full={photo.src} aria-label={`View larger: ${photo.alt}`}><img src={photo.src} alt={photo.alt} class="gallery-tile" loading="lazy" /></button>
               : <div class="gallery-tile gallery-placeholder" role="img" aria-label={photo.alt}><span aria-hidden="true">⛸</span></div>
           )}
         </div>
       </div>
     ))}
   </section>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+  </div>
 </BaseLayout>
+
+<script>
+  const lightbox = document.getElementById('lightbox') as HTMLElement;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const closeBtn = lightbox?.querySelector('.lightbox-close') as HTMLButtonElement;
+
+  function openLightbox(src: string, alt: string) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.add('lightbox-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeBtn?.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('lightbox-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.gallery-tile-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const full = btn.dataset.full;
+      const img = btn.querySelector('img');
+      if (full) openLightbox(full, img?.alt || '');
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('lightbox-open')) closeLightbox();
+  });
+</script>
 
 <style>
   .page-hero { text-align: center; }
@@ -163,12 +206,58 @@ const sections = [
     gap: 0.75rem;
   }
 
+  .gallery-tile-btn {
+    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .gallery-tile-btn img { display: block; transition: transform 0.25s ease; }
+  .gallery-tile-btn:hover img { transform: scale(1.05); }
+  .gallery-tile-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+
   .gallery-tile {
     aspect-ratio: 4 / 3;
     width: 100%;
     border-radius: var(--radius-md);
     object-fit: cover;
   }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.88);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .lightbox.lightbox-open { display: flex; }
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--white);
+    background: rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { background: rgba(0, 0, 0, 0.7); }
 
   .gallery-placeholder {
     background: var(--teal-lt);
